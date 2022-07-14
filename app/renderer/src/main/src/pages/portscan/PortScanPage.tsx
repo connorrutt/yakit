@@ -57,7 +57,7 @@ export interface PortScanParams {
     BasicCrawlerRequestMax?: number
 }
 
-const ScanKind: { [key: string]: string } = {
+const ScanKind: {[key: string]: string} = {
     syn: "SYN",
     fingerprint: "指纹",
     all: "SYN+指纹"
@@ -104,10 +104,8 @@ export const PortScanPage: React.FC<PortScanPageProp> = (props) => {
         "scan-port",
         "PortScan",
         token,
-        () => {
-        },
-        () => {
-        },
+        () => {},
+        () => {},
         (obj, content) => content.data.indexOf("isOpen") > -1 && content.data.indexOf("port") > -1
     )
 
@@ -123,8 +121,7 @@ export const PortScanPage: React.FC<PortScanPageProp> = (props) => {
                     // }, 300)
                 }
             })
-            .catch(() => {
-            })
+            .catch(() => {})
             .finally(() => {
                 setTimeout(() => setLoading(false), 100)
             })
@@ -327,7 +324,7 @@ export const PortScanPage: React.FC<PortScanPageProp> = (props) => {
                                                         setParams({...params, Ports: defaultPorts})
                                                     }}
                                                 >
-                                                    <ReloadOutlined/>
+                                                    <ReloadOutlined />
                                                 </a>
                                             </Tooltip>
                                         </Space>
@@ -372,7 +369,7 @@ export const PortScanPage: React.FC<PortScanPageProp> = (props) => {
                                     </Form.Item>
                                 </Form>
                             </div>
-                            <Divider style={{margin: "5px 0"}}/>
+                            <Divider style={{margin: "5px 0"}} />
                             <div style={{flex: 1, overflow: "hidden"}}>
                                 <Tabs className='scan-port-tabs' tabBarStyle={{marginBottom: 5}}>
                                     <Tabs.TabPane tab={"扫描端口列表"} key={"scanPort"} forceRender>
@@ -397,7 +394,7 @@ export const PortScanPage: React.FC<PortScanPageProp> = (props) => {
 
                                             <Row style={{marginTop: 6}} gutter={6}>
                                                 <Col span={24}>
-                                                    <OpenPortTableViewer data={openPorts}/>
+                                                    <OpenPortTableViewer data={openPorts} />
                                                 </Col>
                                                 {/*<Col span={8}>*/}
                                                 {/*    <ClosedPortTableViewer data={closedPorts}/>*/}
@@ -505,18 +502,6 @@ const ScanPortForm: React.FC<ScanPortFormProp> = (props) => {
                         setValue={(Active) => setParams({...params, Active})}
                         value={params.Active}
                     />
-                    <SelectOne
-                        label={"服务指纹级别"}
-                        help={"级别越高探测的详细程度越多，主动发包越多，时间越长"}
-                        data={[
-                            {value: 1, text: "基础"},
-                            {value: 3, text: "适中"},
-                            {value: 7, text: "详细"},
-                            {value: 100, text: "全部"}
-                        ]}
-                        value={params.ProbeMax}
-                        setValue={(ProbeMax) => setParams({...params, ProbeMax})}
-                    />
                     <InputInteger
                         label={"主动发包超时时间"}
                         help={"某些指纹的检测需要检查目标针对某一个探针请求的响应，需要主动发包"}
@@ -538,85 +523,54 @@ const ScanPortForm: React.FC<ScanPortFormProp> = (props) => {
                         mode={"tags"}
                         setValue={(e) => setParams({...params, Proxy: (e || "").split(",").filter((i) => !!i)})}
                     />
-                    <SelectOne
-                        label={"高级指纹选项"}
-                        data={[
-                            {value: "web", text: "仅web指纹"},
-                            {value: "service", text: "服务指纹"},
-                            {value: "all", text: "全部指纹"}
-                        ]}
-                        setValue={(FingerprintMode) => setParams({...params, FingerprintMode})}
-                        value={params.FingerprintMode}
+                    <SwitchItem
+                        label={"扫描结果入库"}
+                        setValue={(SaveToDB) => {
+                            setParams({...params, SaveToDB, SaveClosedPorts: false})
+                        }}
+                        value={params.SaveToDB}
                     />
-                    <Divider orientation={"left"}>基础爬虫配置</Divider>
-                    <Form.Item
-                        label={"爬虫设置"}
-                        help={"在发现网站内容是一个 HTTP(s) 服务后，进行最基础的爬虫以发现更多数据"}
-                    >
-                        <Space>
-                            <Checkbox
-                                onChange={(e) => setParams({...params, EnableBasicCrawler: e.target.value})}
-                                checked={params.EnableBasicCrawler}
-                            >
-                                启用爬虫
-                            </Checkbox>
-                            <InputNumber
-                                addonBefore={"爬虫请求数"}
-                                value={params.BasicCrawlerRequestMax}
-                                onChange={(e) => setParams({...params, BasicCrawlerRequestMax: e})}
+                    {params.SaveToDB && (
+                        <SwitchItem
+                            label={"保存关闭的端口"}
+                            setValue={(SaveClosedPorts) => setParams({...params, SaveClosedPorts})}
+                            value={params.SaveClosedPorts}
+                        />
+                    )}
+                    <SwitchItem
+                        label={"自动扫相关C段"}
+                        help={"可以把域名 /IP 转化为 C 段目标，直接进行扫描"}
+                        value={params.EnableCClassScan}
+                        setValue={(EnableCClassScan) => setParams({...params, EnableCClassScan})}
+                    />
+                    <SwitchItem
+                        label={"跳过主机存活检测"}
+                        help={"主机存活检测，根据当前用户权限使用 ICMP/TCP Ping 探测主机是否存活"}
+                        value={params.SkippedHostAliveScan}
+                        setValue={(SkippedHostAliveScan) => setParams({...params, SkippedHostAliveScan})}
+                    />
+                    {!params.SkippedHostAliveScan && (
+                        <>
+                            <InputItem
+                                label={"TCP Ping 端口"}
+                                help={"配置 TCP Ping 端口：以这些端口是否开放作为 TCP Ping 依据"}
+                                value={params.HostAlivePorts}
+                                setValue={(HostAlivePorts) => setParams({...params, HostAlivePorts})}
                             />
-                        </Space>
-                    </Form.Item>
-                </>
-            )}
-
-            <Divider orientation={"left"}>其他配置</Divider>
-            <SwitchItem
-                label={"扫描结果入库"}
-                setValue={(SaveToDB) => {
-                    setParams({...params, SaveToDB, SaveClosedPorts: false})
-                }}
-                value={params.SaveToDB}
-            />
-            {params.SaveToDB && (
-                <SwitchItem
-                    label={"保存关闭的端口"}
-                    setValue={(SaveClosedPorts) => setParams({...params, SaveClosedPorts})}
-                    value={params.SaveClosedPorts}
-                />
-            )}
-            <SwitchItem
-                label={"自动扫相关C段"}
-                help={"可以把域名 /IP 转化为 C 段目标，直接进行扫描"}
-                value={params.EnableCClassScan}
-                setValue={(EnableCClassScan) => setParams({...params, EnableCClassScan})}
-            />
-            <SwitchItem
-                label={"跳过主机存活检测"}
-                help={"主机存活检测，根据当前用户权限使用 ICMP/TCP Ping 探测主机是否存活"}
-                value={params.SkippedHostAliveScan}
-                setValue={(SkippedHostAliveScan) => setParams({...params, SkippedHostAliveScan})}
-            />
-            {!params.SkippedHostAliveScan && (
-                <>
+                        </>
+                    )}
                     <InputItem
-                        label={"TCP Ping 端口"}
-                        help={"配置 TCP Ping 端口：以这些端口是否开放作为 TCP Ping 依据"}
-                        value={params.HostAlivePorts}
-                        setValue={(HostAlivePorts) => setParams({...params, HostAlivePorts})}
+                        label={"排除主机"}
+                        setValue={(ExcludeHosts) => setParams({...params, ExcludeHosts})}
+                        value={params.ExcludeHosts}
+                    />
+                    <InputItem
+                        label={"排除端口"}
+                        setValue={(ExcludePorts) => setParams({...params, ExcludePorts})}
+                        value={params.ExcludePorts}
                     />
                 </>
             )}
-            <InputItem
-                label={"排除主机"}
-                setValue={(ExcludeHosts) => setParams({...params, ExcludeHosts})}
-                value={params.ExcludeHosts}
-            />
-            <InputItem
-                label={"排除端口"}
-                setValue={(ExcludePorts) => setParams({...params, ExcludePorts})}
-                value={params.ExcludePorts}
-            />
         </Form>
     )
 }
