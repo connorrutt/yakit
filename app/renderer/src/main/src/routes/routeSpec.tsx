@@ -184,35 +184,35 @@ export const RouteMenuData: MenuDataProps[] = [
             {key: Route.PoC, label: "专项漏洞检测", icon: <EllipsisOutlined />, disabled: false}
         ]
     },
-    {
-        key: Route.hostSecurity,
-        label: "主机安全",
-        icon: <FunctionOutlined />
-    },
+    // {
+    //     key: Route.hostSecurity,
+    //     label: "主机安全",
+    //     icon: <FunctionOutlined />
+    // },
 
-    {
-        key: Route.routingSecurity,
-        label: "路由安全",
-        icon: <FunctionOutlined />
-    },
+    // {
+    //     key: Route.routingSecurity,
+    //     label: "路由安全",
+    //     icon: <FunctionOutlined />
+    // },
 
-    {
-        key: Route.wlwSecurity,
-        label: "物联网安全",
-        icon: <FunctionOutlined />
-    },
+    // {
+    //     key: Route.wlwSecurity,
+    //     label: "物联网安全",
+    //     icon: <FunctionOutlined />
+    // },
 
-    {
-        key: Route.cloudPlatformSecurity,
-        label: "云平台安全",
-        icon: <FunctionOutlined />
-    },
+    // {
+    //     key: Route.cloudPlatformSecurity,
+    //     label: "云平台安全",
+    //     icon: <FunctionOutlined />
+    // },
 
-    {
-        key: Route.passwordSecurity,
-        label: "密码安全",
-        icon: <FunctionOutlined />
-    },
+    // {
+    //     key: Route.passwordSecurity,
+    //     label: "密码安全",
+    //     icon: <FunctionOutlined />
+    // },
 
     {
         key: Route.automatedModule,
