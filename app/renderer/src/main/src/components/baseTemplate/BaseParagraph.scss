@@ -1,0 +1,17 @@
+.base-paragraph {
+    position: relative;
+    .operate-btn{
+        color:#ff7d23;
+        cursor: pointer;
+    }
+    .count-ellipsis {
+        position: absolute;
+        left: 200%;
+        z-index: -100;
+        opacity: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-all;
+    }
+}
