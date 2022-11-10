@@ -1,5 +1,5 @@
-import React, { Suspense } from "react"
-import { YakExecutor } from "../pages/invoker/YakExecutor"
+import React, {Suspense} from "react"
+import {YakExecutor} from "../pages/invoker/YakExecutor"
 import {
     AimOutlined,
     AppstoreOutlined,
@@ -14,28 +14,28 @@ import {
 } from "@ant-design/icons"
 // import {HTTPHacker} from "../pages/hacker/httpHacker";
 // import {CodecPage} from "../pages/codec/CodecPage";
-import { ShellReceiverPage } from "../pages/shellReceiver/ShellReceiverPage"
-import { YakBatchExecutors } from "../pages/invoker/batch/YakBatchExecutors"
-import { PayloadManagerPage } from "../pages/payloadManager/PayloadManager"
-import { PortScanPage } from "../pages/portscan/PortScanPage"
-import { YakitStorePage } from "../pages/yakitStore/YakitStorePage"
+import {ShellReceiverPage} from "../pages/shellReceiver/ShellReceiverPage"
+import {YakBatchExecutors} from "../pages/invoker/batch/YakBatchExecutors"
+import {PayloadManagerPage} from "../pages/payloadManager/PayloadManager"
+import {PortScanPage} from "../pages/portscan/PortScanPage"
+import {YakitStorePage} from "../pages/yakitStore/YakitStorePage"
 
-import { PluginOperator } from "../pages/yakitStore/PluginOperator"
-import { failed } from "../utils/notification"
-import { BrutePage } from "../pages/brute/BrutePage"
-import { DataCompare } from "../pages/compare/DataCompare"
-import { HTTPHistory } from "../components/HTTPHistory"
-import { PortAssetTable } from "../pages/assetViewer/PortAssetPage"
-import { YakScriptExecResultTable } from "../components/YakScriptExecResultTable"
-import { DomainAssetPage } from "../pages/assetViewer/DomainAssetPage"
-import { RiskPage } from "../pages/risks/RiskPage"
-import { DNSLogPage } from "../pages/dnslog/DNSLogPage"
-import { HTTPFuzzerPage } from "../pages/fuzzer/HTTPFuzzerPage"
-import { fuzzerInfoProp } from "../pages/MainOperator"
-import { ICMPSizeLoggerPage } from "../pages/icmpsizelog/ICMPSizeLoggerPage"
-import { RandomPortLogPage } from "../pages/randomPortLog/RandomPortLogPage"
-import { ReportViewerPage } from "../pages/assetViewer/ReportViewerPage"
-import { BatchExecutorPageEx } from "../pages/invoker/batch/BatchExecutorPageEx"
+import {PluginOperator} from "../pages/yakitStore/PluginOperator"
+import {failed} from "../utils/notification"
+import {BrutePage} from "../pages/brute/BrutePage"
+import {DataCompare} from "../pages/compare/DataCompare"
+import {HTTPHistory} from "../components/HTTPHistory"
+import {PortAssetTable} from "../pages/assetViewer/PortAssetPage"
+import {YakScriptExecResultTable} from "../components/YakScriptExecResultTable"
+import {DomainAssetPage} from "../pages/assetViewer/DomainAssetPage"
+import {RiskPage} from "../pages/risks/RiskPage"
+import {DNSLogPage} from "../pages/dnslog/DNSLogPage"
+import {HTTPFuzzerPage} from "../pages/fuzzer/HTTPFuzzerPage"
+import {fuzzerInfoProp} from "../pages/MainOperator"
+import {ICMPSizeLoggerPage} from "../pages/icmpsizelog/ICMPSizeLoggerPage"
+import {RandomPortLogPage} from "../pages/randomPortLog/RandomPortLogPage"
+import {ReportViewerPage} from "../pages/assetViewer/ReportViewerPage"
+import {BatchExecutorPageEx} from "../pages/invoker/batch/BatchExecutorPageEx"
 // import {ReverseServerPage} from "../pages/reverse/ReverseServerPage"
 // import {PayloadGeneraterPage} from "../pages/payloadGenerater/PayloadGeneraterPage"
 // import {PayloadGenerater_New} from "../pages/payloadGenerater/JavaPayloadPage"
@@ -45,14 +45,14 @@ import {
     ReadOnlyBatchExecutorByMenuItem,
     ReadOnlyBatchExecutorByRecoverUid
 } from "../pages/invoker/batch/ReadOnlyBatchExecutorByMenuItem"
-import { PacketScanner } from "@/pages/packetScanner/PacketScanner"
-import { AddYakitScript } from "@/pages/yakitStore/AddYakitScript/AddYakitScript"
-import { WebsocketFuzzer } from "@/pages/websocket/WebsocketFuzzer";
-import { WebsocketFlowHistory } from "@/pages/websocket/WebsocketFlowHistory";
-import { YakitPluginJournalDetails } from "@/pages/yakitStore/YakitPluginOnlineJournal/YakitPluginJournalDetails"
-import { OnlinePluginRecycleBin } from "@/pages/yakitStore/OnlinePluginRecycleBin/OnlinePluginRecycleBin"
-import { JavaPayloadPage } from "@/pages/payloadGenerater/NewJavaPayloadPage"
-import { NewReverseServerPage } from "@/pages/reverseServer/NewReverseServerPage"
+import {PacketScanner} from "@/pages/packetScanner/PacketScanner"
+import {AddYakitScript} from "@/pages/yakitStore/AddYakitScript/AddYakitScript"
+import {WebsocketFuzzer} from "@/pages/websocket/WebsocketFuzzer"
+import {WebsocketFlowHistory} from "@/pages/websocket/WebsocketFlowHistory"
+import {YakitPluginJournalDetails} from "@/pages/yakitStore/YakitPluginOnlineJournal/YakitPluginJournalDetails"
+import {OnlinePluginRecycleBin} from "@/pages/yakitStore/OnlinePluginRecycleBin/OnlinePluginRecycleBin"
+import {JavaPayloadPage} from "@/pages/payloadGenerater/NewJavaPayloadPage"
+import {NewReverseServerPage} from "@/pages/reverseServer/NewReverseServerPage"
 import AccountAdminPage from "@/pages/accountAdminPage/AccountAdminPage"
 
 const HTTPHacker = React.lazy(() => import("../pages/hacker/httpHacker"))
@@ -78,7 +78,7 @@ export enum Route {
     WebsocketHistory = "websocket-history",
 
     // 具体漏洞内容
-    PoC= "poc",
+    PoC = "poc",
 
     // Payload 管理
     PayloadManager = "payload-manager",
@@ -124,10 +124,10 @@ export enum Route {
     // 插件
     AddYakitScript = "add-yakit-script",
     YakitPluginJournalDetails = "yakit-plugin-journal-details",
-    OnlinePluginRecycleBin = 'online-plugin-recycle-bin',
+    OnlinePluginRecycleBin = "online-plugin-recycle-bin",
 
     // 管理
-    AccountAdminPage = "account-admin-page", // 用户管理
+    AccountAdminPage = "account-admin-page" // 用户管理
 }
 
 export function RouteNameToVerboseName(r: string) {
@@ -150,6 +150,7 @@ export function RouteNameToVerboseName(r: string) {
 }
 
 export interface MenuDataProps {
+    id: string
     key?: Route
     subMenuData?: MenuDataProps[]
     label: string
@@ -162,87 +163,95 @@ export const NoScrollRoutes: Route[] = [Route.HTTPHacker, Route.Mod_Brute, Route
 
 export const RouteMenuData: MenuDataProps[] = [
     {
+        id: "1",
         key: Route.PenTest,
         label: "手工渗透测试",
         icon: <AimOutlined />,
         subMenuData: [
-            { key: Route.HTTPHacker, label: "MITM", icon: <FireOutlined /> },
-            { key: Route.HTTPFuzzer, label: "Web Fuzzer", icon: <AimOutlined /> },
-            { key: Route.WebsocketFuzzer, label: "Websocket Fuzzer", icon: <AimOutlined /> },
-            {key: Route.PayloadGenerater_New, label: "Yso-Java Hack", icon: <OneToOneOutlined />},
+            {id: "1-1", key: Route.HTTPHacker, label: "MITM", icon: <FireOutlined />},
+            {id: "1-2", key: Route.HTTPFuzzer, label: "Web Fuzzer", icon: <AimOutlined />},
+            {id: "1-3", key: Route.WebsocketFuzzer, label: "Websocket Fuzzer", icon: <AimOutlined />},
+            {id: "1-4", key: Route.PayloadGenerater_New, label: "Yso-Java Hack", icon: <OneToOneOutlined />}
         ]
     },
     {
+        id: "2",
         key: Route.GeneralModule,
         label: "基础安全工具",
         icon: <RocketOutlined />,
         subMenuData: [
-            { key: Route.Mod_ScanPort, label: "扫描端口/指纹", icon: <EllipsisOutlined /> },
-            { key: Route.Mod_Brute, label: "爆破与未授权", icon: <EllipsisOutlined />, disabled: false }
+            {id: "2-1", key: Route.Mod_ScanPort, label: "扫描端口/指纹", icon: <EllipsisOutlined />},
+            {id: "2-2", key: Route.Mod_Brute, label: "爆破与未授权", icon: <EllipsisOutlined />, disabled: false}
             // {key: Route.Mod_Subdomain, label: "子域名发现", icon: <EllipsisOutlined/>, disabled: true},
             // {key: Route.Mod_Crawler, label: "基础爬虫", icon: <EllipsisOutlined/>, disabled: true},
             // {key: Route.Mod_SpaceEngine, label: "空间引擎", icon: <EllipsisOutlined/>, disabled: true},
         ]
     },
     {
+        id: "3",
         key: Route.PoC,
         label: "专项漏洞检测",
         icon: <FunctionOutlined />
     },
 
     {
+        id: "4",
         key: Route.ModManagerDetail,
         label: "插件管理",
         icon: <AppstoreOutlined />,
         subMenuData: [
-            { key: Route.ModManager, label: "插件仓库", icon: <AppstoreOutlined /> },
-            { key: Route.BatchExecutorPage, label: "插件批量执行", icon: <AppstoreOutlined /> }
+            {id: "4-1", key: Route.ModManager, label: "插件仓库", icon: <AppstoreOutlined />},
+            {id: "4-2", key: Route.BatchExecutorPage, label: "插件批量执行", icon: <AppstoreOutlined />}
         ]
     },
 
-    { key: Route.PayloadManager, label: "Payload 管理", icon: <AuditOutlined /> },
-    { key: Route.YakScript, label: "Yak Runner", icon: <CodeOutlined /> },
+    {id: "5", key: Route.PayloadManager, label: "Payload 管理", icon: <AuditOutlined />},
+    {id: "6", key: Route.YakScript, label: "Yak Runner", icon: <CodeOutlined />},
     {
+        id: "7",
         key: Route.ReverseManager,
         label: "反连管理",
         icon: <AppstoreOutlined />,
         subMenuData: [
-            {key: Route.ReverseServer_New, label: "反连服务器", icon: <OneToOneOutlined />},
-            {key: Route.PayloadGenerater_New, label: "Yso-Java Hack", icon: <OneToOneOutlined />},
+            {id: "7-1", key: Route.ReverseServer_New, label: "反连服务器", icon: <OneToOneOutlined />},
+            {id: "7-2", key: Route.PayloadGenerater_New, label: "Yso-Java Hack", icon: <OneToOneOutlined />},
             // {key: Route.PayloadGenerater, label: "JavaPayload", icon: <OneToOneOutlined />},
             // {key: Route.ReverseServer, label: "反连服务器", icon: <OneToOneOutlined />},
-            {key: Route.ShellReceiver, label: "端口监听器", icon: <OneToOneOutlined />},
-            {key: Route.DNSLog, label: "DNSLog", icon: <OneToOneOutlined />},
-            {key: Route.ICMPSizeLog, label: "ICMP-SizeLog", icon: <OneToOneOutlined />},
-            {key: Route.TCPPortLog, label: "TCP-PortLog", icon: <OneToOneOutlined />}
+            {id: "7-3", key: Route.ShellReceiver, label: "端口监听器", icon: <OneToOneOutlined />},
+            {id: "7-4", key: Route.DNSLog, label: "DNSLog", icon: <OneToOneOutlined />},
+            {id: "7-5", key: Route.ICMPSizeLog, label: "ICMP-SizeLog", icon: <OneToOneOutlined />},
+            {id: "7-6", key: Route.TCPPortLog, label: "TCP-PortLog", icon: <OneToOneOutlined />}
         ]
     },
     {
+        id: "8",
         key: Route.DataHandler,
         label: "数据处理",
         icon: <FunctionOutlined />,
         subMenuData: [
-            { key: Route.Codec, label: "Codec", icon: <FireOutlined /> },
-            { key: Route.DataCompare, label: "数据对比", icon: <OneToOneOutlined /> }
+            {id: "8-1", key: Route.Codec, label: "Codec", icon: <FireOutlined />},
+            {id: "8-2", key: Route.DataCompare, label: "数据对比", icon: <OneToOneOutlined />}
         ]
     },
 
     {
+        id: "9",
         key: Route.Database,
         label: "数据库",
         icon: <FunctionOutlined />,
         subMenuData: [
-            { key: Route.DB_HTTPHistory, label: "HTTP History", icon: <OneToOneOutlined /> },
-            { key: Route.DB_Ports, label: "端口资产", icon: <OneToOneOutlined /> },
-            { key: Route.DB_Domain, label: "域名资产", icon: <FireOutlined /> },
-            { key: Route.DB_ExecResults, label: "插件执行结果", icon: <FireOutlined /> },
-            { key: Route.DB_Risk, label: "漏洞与风险", icon: <BugOutlined /> },
-            { key: Route.DB_Report, label: "报告(Beta*)", icon: <FireOutlined /> }
+            {id: "9-1", key: Route.DB_HTTPHistory, label: "HTTP History", icon: <OneToOneOutlined />},
+            {id: "9-2", key: Route.DB_Ports, label: "端口资产", icon: <OneToOneOutlined />},
+            {id: "9-3", key: Route.DB_Domain, label: "域名资产", icon: <FireOutlined />},
+            {id: "9-4", key: Route.DB_ExecResults, label: "插件执行结果", icon: <FireOutlined />},
+            {id: "9-5", key: Route.DB_Risk, label: "漏洞与风险", icon: <BugOutlined />},
+            {id: "9-6", key: Route.DB_Report, label: "报告(Beta*)", icon: <FireOutlined />}
         ]
     },
 
     // 隐藏内容
     {
+        id: "10",
         key: Route.BatchExecutorRecover,
         label: "继续任务：批量执行插件",
         icon: <FireOutlined />,
@@ -250,6 +259,7 @@ export const RouteMenuData: MenuDataProps[] = [
         hidden: true
     },
     {
+        id: "11",
         key: Route.AccountAdminPage,
         label: "账号管理",
         icon: <FireOutlined />,
@@ -296,7 +306,6 @@ interface ComponentParams {
 }
 
 export const ContentByRoute = (r: Route | string, yakScriptId?: number, params?: ComponentParams): JSX.Element => {
-
     const routeStr = `${r}`
     // 处理社区插件（以插件 ID 添加的情况）
     if (routeStr.startsWith("plugin:")) {
@@ -415,7 +424,7 @@ export const ContentByRoute = (r: Route | string, yakScriptId?: number, params?:
             return <YakitPluginJournalDetails YakitPluginJournalDetailsId={params?.YakScriptJournalDetailsId || 0} />
         case Route.OnlinePluginRecycleBin:
             return <OnlinePluginRecycleBin />
-        case Route.AccountAdminPage: 
+        case Route.AccountAdminPage:
             return <AccountAdminPage />
         default:
             return <div />
