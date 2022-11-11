@@ -27,7 +27,7 @@ const PortScanning = () => (
 )
 
 /**
- * @description:  端口扫描
+ * @description:  端口/指纹扫描
  */
 export const MenuPortScanningIcon = (props: Partial<CustomIconComponentProps>) => {
     return <Icon component={PortScanning} {...props} />
@@ -798,4 +798,43 @@ const PluginBatchExecution = () => (
  */
 export const MenuPluginBatchExecutionIcon = (props: Partial<CustomIconComponentProps>) => {
     return <Icon component={PluginBatchExecution} {...props} />
+}
+
+const DefaultPlugin = () => (
+    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+        <mask
+            id='mask0_2879_6168'
+            style={{maskType: "alpha"}}
+            maskUnits='userSpaceOnUse'
+            x='0'
+            y='0'
+            width='24'
+            height='24'
+        >
+            <rect width='24' height='24' fill='#D9D9D9' />
+        </mask>
+        <g mask='url(#mask0_2879_6168)'>
+            <path
+                d='M10.5 3.11111C10.5 1.94518 11.4452 1 12.6111 1C13.777 1 14.7222 1.94518 14.7222 3.11111V4.16667C14.7222 4.74963 15.1948 5.22222 15.7778 5.22222H18.9444C19.5274 5.22222 20 5.69481 20 6.27778V9.44444C20 10.0274 19.5274 10.5 18.9444 10.5H17.8889C16.723 10.5 15.7778 11.4452 15.7778 12.6111C15.7778 13.777 16.723 14.7222 17.8889 14.7222H18.9444C19.5274 14.7222 20 15.1948 20 15.7778V18.9444C20 19.5274 19.5274 20 18.9444 20H15.7778C15.1948 20 14.7222 19.5274 14.7222 18.9444V17.8889C14.7222 16.723 13.777 15.7778 12.6111 15.7778C11.4452 15.7778 10.5 16.723 10.5 17.8889V18.9444C10.5 19.5274 10.0274 20 9.44444 20H6.27778C5.69481 20 5.22222 19.5274 5.22222 18.9444V15.7778C5.22222 15.1948 4.74963 14.7222 4.16667 14.7222H3.11111C1.94518 14.7222 1 13.777 1 12.6111C1 11.4452 1.94518 10.5 3.11111 10.5H4.16667C4.74963 10.5 5.22222 10.0274 5.22222 9.44444V6.27778C5.22222 5.69481 5.69481 5.22222 6.27778 5.22222H9.44444C10.0274 5.22222 10.5 4.74963 10.5 4.16667V3.11111Z'
+                stroke='#31343F'
+                stroke-width='1.5'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+            />
+            <path
+                d='M10.5 4.16667V3.11111C10.5 1.94518 11.4452 1 12.6111 1C13.777 1 14.7222 1.94518 14.7222 3.11111V4.16667M4.16667 14.7222H3.11111C1.94518 14.7222 1 13.777 1 12.6111C1 11.4452 1.94518 10.5 3.11111 10.5H4.16667'
+                stroke='#F28B44'
+                stroke-width='1.5'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+            />
+        </g>
+    </svg>
+)
+
+/**
+ * @description:默认的插件菜单图标
+ */
+export const DefaultPluginIcon = (props: Partial<CustomIconComponentProps>) => {
+    return <Icon component={DefaultPlugin} {...props} />
 }

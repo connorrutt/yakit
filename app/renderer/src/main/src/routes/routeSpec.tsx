@@ -54,6 +54,14 @@ import {OnlinePluginRecycleBin} from "@/pages/yakitStore/OnlinePluginRecycleBin/
 import {JavaPayloadPage} from "@/pages/payloadGenerater/NewJavaPayloadPage"
 import {NewReverseServerPage} from "@/pages/reverseServer/NewReverseServerPage"
 import AccountAdminPage from "@/pages/accountAdminPage/AccountAdminPage"
+import {
+    MenuBlastingAndUnauthorizedTestingIcon,
+    MenuComprehensiveCatalogScanningAndBlastingIcon,
+    MenuMITMInteractiveHijackingIcon,
+    MenuPortScanningIcon,
+    MenuWebFuzzerIcon,
+    MenuYsoJavaHackIcon
+} from "@/pages/customizeMenu/icon/menuIcon"
 
 const HTTPHacker = React.lazy(() => import("../pages/hacker/httpHacker"))
 const CodecPage = React.lazy(() => import("../pages/codec/CodecPage"))
@@ -154,7 +162,8 @@ export interface MenuDataProps {
     key?: Route
     subMenuData?: MenuDataProps[]
     label: string
-    icon: JSX.Element
+    describe?: string
+    icon?: JSX.Element
     disabled?: boolean
     hidden?: boolean
 }
@@ -430,3 +439,79 @@ export const ContentByRoute = (r: Route | string, yakScriptId?: number, params?:
             return <div />
     }
 }
+
+export const DefaultRouteMenuData: MenuDataProps[] = [
+    {
+        id: "1",
+        label: "手工渗测",
+        subMenuData: [
+            {
+                id: "1-1",
+                key: Route.HTTPHacker,
+                label: "MITM 交互式劫持",
+                icon: <MenuMITMInteractiveHijackingIcon />,
+                describe: "安装 SSL/TLS 证书，劫持浏览器所有流量请求、响应数据包，提供手动劫持与被动扫描两种模式"
+            },
+            {
+                id: "1-2",
+                key: Route.HTTPFuzzer,
+                label: "Web Fuzzer",
+                icon: <MenuWebFuzzerIcon />,
+                describe: "通过核心模糊测试标签语法，实现了对 Burpsuite 的 Repeater 和 Intruder 的完美整合"
+            },
+            {id: "1-3", key: Route.WebsocketFuzzer, label: "Websocket Fuzzer", icon: <div>5555</div>},
+            {
+                id: "1-4",
+                key: Route.PayloadGenerater_New,
+                label: "Yso-Java Hack",
+                icon: <MenuYsoJavaHackIcon />,
+                describe: "配置序列化 Payload 或恶意类"
+            }
+        ]
+    },
+    {
+        id: "2",
+        label: "基础工具",
+        subMenuData: [
+            {
+                id: "2-1",
+                key: Route.Mod_Brute,
+                label: "爆破与未授权检测",
+                icon: <MenuBlastingAndUnauthorizedTestingIcon />,
+                describe: "对目标的登录账号、密码等进行爆破，在爆破前会进行未授权检测"
+            },
+            {
+                id: "2-2",
+                key: undefined,
+                label: "基础爬虫",
+                icon: <EllipsisOutlined />,
+                describe: "通过爬虫可快速了解网站的整体架构"
+            },
+            {
+                id: "2-3",
+                key: undefined,
+                label: "空间引擎: Hunter",
+                icon: <div>5555</div>
+            },
+            {
+                id: "2-4",
+                key: Route.Mod_ScanPort,
+                label: "扫描端口/指纹",
+                icon: <MenuPortScanningIcon />,
+                describe: "对 IP、IP段、域名等端口进行 SYN、指纹检测、可编写插件进行检测、满足更个性化等需求"
+            },
+            {
+                id: "2-5",
+                key: undefined,
+                label: "子域名收集",
+                icon: <div>5555</div>
+            },
+            {
+                id: "2-6",
+                key: undefined,
+                label: "综合目录扫描与爆破",
+                icon: <MenuComprehensiveCatalogScanningAndBlastingIcon />
+            }
+        ]
+    }
+]
