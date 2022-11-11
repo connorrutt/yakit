@@ -56,11 +56,22 @@ import {NewReverseServerPage} from "@/pages/reverseServer/NewReverseServerPage"
 import AccountAdminPage from "@/pages/accountAdminPage/AccountAdminPage"
 import {
     MenuBlastingAndUnauthorizedTestingIcon,
+    MenuCodecIcon,
     MenuComprehensiveCatalogScanningAndBlastingIcon,
+    MenuDataComparisonIcon,
+    MenuDNSLogIcon,
+    MenuICMPSizeLogIcon,
     MenuMITMInteractiveHijackingIcon,
+    MenuPluginBatchExecutionIcon,
+    MenuPluginWarehouseIcon,
+    MenuPortListenerIcon,
     MenuPortScanningIcon,
+    MenuReverseConnectionServerIcon,
+    MenuSpecialVulnerabilityDetectionIcon,
+    MenuTCPPortLogIcon,
     MenuWebFuzzerIcon,
-    MenuYsoJavaHackIcon
+    MenuYsoJavaHackIcon,
+    SpaceEngineHunterIcon
 } from "@/pages/customizeMenu/icon/menuIcon"
 
 const HTTPHacker = React.lazy(() => import("../pages/hacker/httpHacker"))
@@ -491,12 +502,12 @@ export const DefaultRouteMenuData: MenuDataProps[] = [
                 id: "2-3",
                 key: undefined,
                 label: "空间引擎: Hunter",
-                icon: <div>5555</div>
+                icon: <SpaceEngineHunterIcon />
             },
             {
                 id: "2-4",
                 key: Route.Mod_ScanPort,
-                label: "扫描端口/指纹",
+                label: "端口/指纹扫描",
                 icon: <MenuPortScanningIcon />,
                 describe: "对 IP、IP段、域名等端口进行 SYN、指纹检测、可编写插件进行检测、满足更个性化等需求"
             },
@@ -513,5 +524,105 @@ export const DefaultRouteMenuData: MenuDataProps[] = [
                 icon: <MenuComprehensiveCatalogScanningAndBlastingIcon />
             }
         ]
+    },
+    {
+        id: "3",
+        label: "专项漏洞检测",
+        subMenuData: [{id: "3-1", key: Route.PoC, label: "专项漏洞检测", icon: <MenuPluginWarehouseIcon />}]
+    },
+    {
+        id: "4",
+        label: "插件",
+        subMenuData: [
+            {id: "4-1", key: Route.ModManager, label: "插件仓库", icon: <MenuPluginWarehouseIcon />},
+            {id: "4-2", key: Route.BatchExecutorPage, label: "插件批量执行", icon: <MenuPluginBatchExecutionIcon />}
+        ]
+    },
+    {
+        id: "7",
+        label: "反连",
+        subMenuData: [
+            {id: "7-1", key: Route.ShellReceiver, label: "端口监听器", icon: <MenuPortListenerIcon />},
+            {id: "7-2", key: Route.ReverseServer_New, label: "反连服务器", icon: <MenuReverseConnectionServerIcon />},
+            {id: "7-3", key: Route.DNSLog, label: "DNSLog", icon: <MenuDNSLogIcon />},
+            {id: "7-4", key: Route.ICMPSizeLog, label: "ICMP-SizeLog", icon: <MenuICMPSizeLogIcon />},
+            {id: "7-5", key: Route.TCPPortLog, label: "TCP-PortLog", icon: <MenuTCPPortLogIcon />},
+            {id: "7-6", key: Route.PayloadGenerater_New, label: "Yso-Java Hack", icon: <MenuYsoJavaHackIcon />}
+        ]
+    },
+    {
+        id: "8",
+        label: "数据处理",
+        subMenuData: [
+            {id: "8-1", key: Route.Codec, label: "Codec", icon: <MenuCodecIcon />},
+            {id: "8-2", key: Route.DataCompare, label: "数据对比", icon: <MenuDataComparisonIcon />}
+        ]
+    },
+    {
+        id: "9",
+        label: "数据库",
+        subMenuData: [
+            {id: "9-1", key: Route.DB_Report, label: "报告(Beta*)", icon: <div>5555</div>},
+            {id: "9-2", key: Route.DB_ExecResults, label: "插件执行结果", icon: <div>5555</div>},
+            {id: "9-3", key: Route.DB_Ports, label: "端口资产", icon: <div>5555</div>},
+            {id: "9-4", key: Route.DB_Risk, label: "漏洞与风险", icon: <div>5555</div>},
+            {id: "9-5", key: Route.DB_Domain, label: "域名资产", icon: <div>5555</div>},
+            {id: "9-6", key: Route.DB_HTTPHistory, label: "HTTP History", icon: <div>5555</div>}
+        ]
     }
+]
+
+export const SystemMenuData: MenuDataProps[] = [
+    {
+        id: "2-4",
+        key: Route.Mod_ScanPort,
+        label: "端口/指纹扫描",
+        icon: <MenuPortScanningIcon />,
+        describe: "对 IP、IP段、域名等端口进行 SYN、指纹检测、可编写插件进行检测、满足更个性化等需求"
+    },
+    {
+        id: "2-2",
+        key: undefined,
+        label: "基础爬虫",
+        icon: <EllipsisOutlined />,
+        describe: "通过爬虫可快速了解网站的整体架构"
+    },
+    {
+        id: "2-6",
+        key: undefined,
+        label: "综合目录扫描与爆破",
+        icon: <MenuComprehensiveCatalogScanningAndBlastingIcon />
+    },
+    {id: "3-1", key: Route.PoC, label: "专项漏洞检测", icon: <MenuPluginWarehouseIcon />},
+    {id: "4-1", key: Route.ModManager, label: "插件仓库", icon: <AppstoreOutlined />},
+    {
+        id: "1-1",
+        key: Route.HTTPHacker,
+        label: "MITM 交互式劫持",
+        icon: <MenuMITMInteractiveHijackingIcon />,
+        describe: "安装 SSL/TLS 证书，劫持浏览器所有流量请求、响应数据包，提供手动劫持与被动扫描两种模式"
+    },
+    {
+        id: "1-2",
+        key: Route.HTTPFuzzer,
+        label: "Web Fuzzer",
+        icon: <MenuWebFuzzerIcon />,
+        describe: "通过核心模糊测试标签语法，实现了对 Burpsuite 的 Repeater 和 Intruder 的完美整合"
+    },
+    {
+        id: "2-1",
+        key: Route.Mod_Brute,
+        label: "爆破与未授权检测",
+        icon: <MenuBlastingAndUnauthorizedTestingIcon />,
+        describe: "对目标的登录账号、密码等进行爆破，在爆破前会进行未授权检测"
+    },
+    {id: "8-1", key: Route.Codec, label: "Codec", icon: <MenuCodecIcon />},
+    {id: "8-2", key: Route.DataCompare, label: "数据对比", icon: <MenuDataComparisonIcon />},
+    {id: "7-1", key: Route.ShellReceiver, label: "端口监听器", icon: <MenuPortListenerIcon />},
+    {id: "7-2", key: Route.ReverseServer_New, label: "反连服务器", icon: <MenuReverseConnectionServerIcon />},
+    {id: "7-3", key: Route.DNSLog, label: "DNSLog", icon: <MenuDNSLogIcon />},
+    {id: "7-4", key: Route.ICMPSizeLog, label: "ICMP-SizeLog", icon: <MenuICMPSizeLogIcon />},
+    {id: "7-5", key: Route.TCPPortLog, label: "TCP-PortLog", icon: <MenuTCPPortLogIcon />},
+    {id: "7-6", key: Route.PayloadGenerater_New, label: "Yso-Java Hack", icon: <MenuYsoJavaHackIcon />},
+    {id: "4-2", key: Route.BatchExecutorPage, label: "插件批量执行", icon: <MenuPluginBatchExecutionIcon />}
 ]

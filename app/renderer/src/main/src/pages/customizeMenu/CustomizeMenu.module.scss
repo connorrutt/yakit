@@ -233,15 +233,48 @@
             margin-right: 8px;
         }
 
+        .second-menu-item-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
         .second-menu-item {
             margin-top: 8px;
-            height: 60px;
+            // height: 60px;
             padding: 12px;
             background: #FFFFFF;
             border: 1px solid var(--neutral-40-border);
             border-radius: 4px;
             display: flex;
             align-items: center;
+            flex: 1;
+
+            svg {
+                margin-right: 8px;
+            }
+
+            .second-menu-label {
+                color: #31343F;
+                font-size: 12px;
+            }
+
+            .second-menu-describe {
+                font-size: 11px;
+                color: #B4BBCA;
+            }
+        }
+
+        .close-icon {
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            color: #85899E;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--primary-border);
+            }
         }
     }
 

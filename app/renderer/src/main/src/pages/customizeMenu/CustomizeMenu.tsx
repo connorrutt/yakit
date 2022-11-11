@@ -7,11 +7,11 @@ import {
     SecondMenuProps
 } from "./CustomizeMenuType"
 import style from "./CustomizeMenu.module.scss"
-import {ArrowLeftIcon, BanIcon, DragIcon, PhotographIcon, PlusIcon, TrashIcon} from "@/assets/commonIcon"
-import {MenuDataProps, RouteMenuData} from "@/routes/routeSpec"
+import {ArrowLeftIcon, BanIcon, CloseIcon, DragIcon, PhotographIcon, PlusIcon, TrashIcon} from "@/assets/commonIcon"
+import {MenuDataProps, DefaultRouteMenuData, SystemMenuData} from "@/routes/routeSpec"
 import classNames from "classnames"
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd"
-import {Button, Input} from "antd"
+import {Button, Input, Radio} from "antd"
 import {useMemoizedFn, useThrottleFn} from "ahooks"
 import {randomString} from "@/utils/randomUtil"
 import {DefaultPluginIcon} from "./icon/menuIcon"
@@ -24,7 +24,7 @@ const reorder = (list: MenuDataProps[], startIndex: number, endIndex: number) =>
 }
 
 const CustomizeMenu: React.FC<CustomizeMenuProps> = (props) => {
-    const [menuData, setMenuData] = useState<MenuDataProps[]>(RouteMenuData)
+    const [menuData, setMenuData] = useState<MenuDataProps[]>(DefaultRouteMenuData)
     const [currentFirstMenu, setCurrentFirstMenu] = useState<MenuDataProps>()
     const [subMenuData, setSubMenuData] = useState<MenuDataProps[]>([])
     const onSelect = useMemoizedFn((item: MenuDataProps) => {
@@ -102,7 +102,14 @@ const CustomizeMenu: React.FC<CustomizeMenuProps> = (props) => {
                     onRemoveFirstMenu={onRemoveFirstMenu}
                 />
             </div>
-            <div className={style["right"]}>右边</div>
+            <div className={style["right"]}>
+                <div>
+                    <Radio.Group defaultValue='a' buttonStyle='solid'>
+                        <Radio.Button value='a'>系统功能</Radio.Button>
+                        <Radio.Button value='b'>插件</Radio.Button>
+                    </Radio.Group>
+                </div>
+            </div>
         </div>
     )
 }
@@ -305,20 +312,27 @@ const SecondMenu: React.FC<SecondMenuProps> = (props) => {
 const SecondMenuItem: React.FC<SecondMenuItemProps> = React.memo((props) => {
     const {menuItem, isDragging} = props
     return (
-        <div
-            className={classNames(style["second-menu-item"], {
-                [style["menu-item-drag"]]: isDragging
-            })}
-        >
-            <DragIcon
-                className={classNames(style["content-icon"], {
-                    [style["content-icon-active"]]: isDragging
+        <div className={style["second-menu-item-content"]}>
+            <div
+                className={classNames(style["second-menu-item"], {
+                    [style["menu-item-drag"]]: isDragging
                 })}
-            />
-            <DefaultPluginIcon />
-            <div>
-                <div>{menuItem.label}</div>
-                <div>{menuItem.describe}</div>
+            >
+                <DragIcon
+                    className={classNames({
+                        [style["content-icon-active"]]: isDragging
+                    })}
+                />
+                <DefaultPluginIcon />
+                <div>
+                    <div className={style["second-menu-label"]}>{menuItem.label}</div>
+                    <div className={style["second-menu-describe"]}>
+                        {menuItem.describe || "No Description about it."}
+                    </div>
+                </div>
+            </div>
+            <div className={style["close-icon"]}>
+                <CloseIcon />
             </div>
         </div>
     )
