@@ -122,7 +122,7 @@ const singletonRoute: Route[] = [
     // 管理
     Route.AccountAdminPage
 ]
-const defaultUserInfo: UserInfoProps = {
+export const defaultUserInfo: UserInfoProps = {
     isLogin: false,
     platform: null,
     githubName: null,
@@ -207,18 +207,18 @@ export interface SetUserInfoProp  {
 }
 
 
-const judgeAvatar = (userInfo) => {
+export const judgeAvatar = (userInfo) => {
     const {companyHeadImg,companyName} = userInfo
     return companyHeadImg&&!!companyHeadImg.length?
-    <Avatar size={38} style={{cursor: "pointer"}} src={companyHeadImg}/>
-    :<Avatar size={38} style={{backgroundColor:"rgb(245, 106, 0)", cursor: "pointer"}}>{companyName.slice(0, 1)}</Avatar>
+    <Avatar size={24} style={{cursor: "pointer"}} src={companyHeadImg}/>
+    :<Avatar size={24} style={{backgroundColor:"rgb(245, 106, 0)", cursor: "pointer"}}>{companyName.slice(0, 1)}</Avatar>
 }
 
 // 可上传文件类型
 const FileType = ["image/png", "image/jpeg", "image/png"]
 
 // 用户信息
-const SetUserInfo: React.FC<SetUserInfoProp> = React.memo((props) => {
+export const SetUserInfo: React.FC<SetUserInfoProp> = React.memo((props) => {
     const {userInfo,setStoreUserInfo} = props
     console.log("userInfo",userInfo)
 
@@ -1198,15 +1198,15 @@ const Main: React.FC<MainProp> = (props) => {
                                 />
                             </Space>
                         </Col>
-                        <Col span={16} style={{textAlign: "right", paddingRight: 28}}>
-                            <PerformanceDisplay />
-                            <RiskStatsTag professionalMode={true} />
+                        {false&&<Col span={16} style={{textAlign: "right", paddingRight: 28}}>
+                            {/* <PerformanceDisplay /> */}
+                            {/* <RiskStatsTag professionalMode={true} /> */}
                             <Space>
                                 {/* {status?.isTLS ? <Tag color={"green"}>TLS:通信已加密</Tag> : <Tag color={"red"}>通信未加密</Tag>} */}
                                 {status?.addr && <Tag color={"geekblue"}>{status?.addr}</Tag>}
                                 {/* <Tag color={engineStatus === "ok" ? "green" : "red"}>Yak 引擎状态：{engineStatus}</Tag> */}
-                                <ReversePlatformStatus/>
-                                <Dropdown
+                                {/* <ReversePlatformStatus/> */}
+                                {false&&<Dropdown
                                     overlayClassName='setting-menu'
                                     forceRender={true}
                                     overlay={
@@ -1295,7 +1295,7 @@ const Main: React.FC<MainProp> = (props) => {
                                     trigger={["click"]}
                                 >
                                     <Button icon={<SettingOutlined/>}>配置</Button>
-                                </Dropdown>
+                                </Dropdown>}
                                 {userInfo.isLogin ? (
                                     <div>
                                         <DropdownMenu
@@ -1350,7 +1350,7 @@ const Main: React.FC<MainProp> = (props) => {
                                     }}
                                 />
                             </Space>
-                        </Col>
+                        </Col>}
                     </Row>
                 </Header>
                 <Content
